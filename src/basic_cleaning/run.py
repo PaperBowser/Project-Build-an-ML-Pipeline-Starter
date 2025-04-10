@@ -30,6 +30,11 @@ def go(args):
     # Convert last_review to datetime
     df['last_review'] = pd.to_datetime(df['last_review'])
 
+    '''
+    The two lines below were supposed to be a fix for me to add, demonstrating that I'm capable of releasing a new 
+    version of the project. However, my forked project files already contained these lines, and the code ran fine as is.
+    I am adding this comment to explain why I'm creating a new version despite not changing the code.
+    '''
     idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
     df = df[idx].copy()
     # Save the cleaned file
