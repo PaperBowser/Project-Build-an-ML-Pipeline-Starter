@@ -1,3 +1,11 @@
+## My project links for submission
+git: <br/>
+https://github.com/PaperBowser/Project-Build-an-ML-Pipeline-Starter
+
+wandb: <br/>
+https://wandb.ai/paperbowser13-western-governors-university/nyc_airbnb
+
+
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
 You are working for a property management company renting rooms and properties for short periods of 
 time on various rental platforms. You need to estimate the typical price for a given property based 
@@ -53,7 +61,7 @@ to add meaningful commit messages.
 Make sure to have conda installed and ready, then create a new environment using the ``environment.yaml``
 file provided in the root of the repository and activate it:
 
-```bash
+``` bash
 > conda env create -f environment.yml
 > conda activate nyc_airbnb_dev
 ```
@@ -63,7 +71,7 @@ Let's make sure we are logged in to Weights & Biases. Get your API key from W&B 
 [https://wandb.ai/authorize](https://wandb.ai/authorize) and click on the + icon (copy to clipboard), 
 then paste your key into this command:
 
-```bash
+``` bash
 > wandb login [your API key]
 ```
 
@@ -90,7 +98,7 @@ accessed from the configuration file.
 In order to run the pipeline when you are developing, you need to be in the root of the starter kit, 
 then you can execute as usual:
 
-```bash
+``` bash
 >  mlflow run .
 ```
 This will run the entire pipeline.
@@ -99,18 +107,18 @@ When developing it is useful to be able to run one step at the time. Say you wan
 the ``download`` step. The `main.py` is written so that the steps are defined at the top of the file, in the 
 ``_steps`` list, and can be selected by using the `steps` parameter on the command line:
 
-```bash
+``` bash
 > mlflow run . -P steps=download
 ```
 If you want to run the ``download`` and the ``basic_cleaning`` steps, you can similarly do:
-```bash
+``` bash
 > mlflow run . -P steps=download,basic_cleaning
 ```
 You can override any other parameter in the configuration file using the Hydra syntax, by
 providing it as a ``hydra_options`` parameter. For example, say that we want to set the parameter
 modeling -> random_forest -> n_estimators to 10 and etl->min_price to 50:
 
-```bash
+``` bash
 > mlflow run . \
   -P steps=download,basic_cleaning \
   -P hydra_options="modeling.random_forest.n_estimators=10 etl.min_price=50"
@@ -121,7 +129,7 @@ In order to simulate a real-world situation, we are providing you with some pre-
 re-usable components. While you have a copy in your fork, you will be using them from the original
 repository by accessing them through their GitHub link, like:
 
-```python
+``` python
 _ = mlflow.run(
                 f"{config['main']['components_repository']}/get_data",
                 "main",
